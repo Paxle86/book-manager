@@ -1,0 +1,9 @@
+h1 Delete book
+form(action="/books/delete/" + book.id, method="POST")
+    label Title
+    input(name="title",type="text", value=book.title)
+    br
+    label Description
+    input(name="description",type="text")
+    br
+    button Delete

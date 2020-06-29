@@ -1,0 +1,17 @@
+h1 
+    a(href="/books") Books list
+p Create a 
+    a(href="books/create") New book
+form(action="/books/search", method="GET")
+    input(type="text", name="q", value=q)
+    button Seach
+ul
+    each book in books
+        li
+        span= book.title 
+        span &nbsp
+        a(href="/books/" + book.id) View
+        br
+        a(href="/books/edit/" + book.id) Sửa
+        span &nbsp
+        a(href="/books/delete/" + book.id) Xóa

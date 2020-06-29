@@ -1,0 +1,9 @@
+h1 Edit book
+form(action="/books/edit/" + book.id, method="POST")
+    label Title
+    input(name="title",type="text", value=book.title)
+    br
+    label Description
+    input(name="description",type="text")
+    br
+    button Edit
