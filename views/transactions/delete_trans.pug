@@ -1,0 +1,9 @@
+h1 Delete transaction
+form(action="/transactions/delete/" + transaction.id, method="POST")
+    label User
+    input(name="title",type="text", value=transaction.user)
+    br
+    label Book
+    input(name="description",type="text", value=transaction.book)
+    br
+    button Delete

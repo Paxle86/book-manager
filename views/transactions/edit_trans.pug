@@ -1,0 +1,14 @@
+h1 Edit transaction
+form(action="/transactions/edit/" + transaction.id, method="POST")
+    label User
+    select(name="user")
+        each user in users
+            option(value=user.name)=user.name
+            
+    br
+    label Book
+    select(name="book")
+        each book in books
+            option(value=book.title)=book.title
+    br
+    button Edit

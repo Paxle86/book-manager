@@ -13,7 +13,7 @@ router.get('/search', (req, res) => {
     var matchedBook = db.get('books').value().filter((book) => {
         return book.title.toLowerCase().indexOf(q.toLowerCase()) !== -1
     })
-    res.render('/books.pug', { books: matchedBook, q})
+    res.render('books/books.pug', { books: matchedBook, q})
 })
 
 // Create book router

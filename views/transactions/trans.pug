@@ -1,0 +1,19 @@
+h1 
+    a(href="/") Transactions list
+p Create a 
+    a(href="/transactions/create") New transaction
+form(action="/transactions/search", method="GET")
+    input(type="text", name="q", value=q)
+    button Seach
+ul
+    each transaction in transactions
+        li
+        span= transaction.user 
+        span &nbsp -  
+        span= transaction.book
+        span &nbsp
+        a(href="/transactions/" + transaction.id) View
+        br
+        a(href="/transactions/edit/" + transaction.id) Sửa
+        span &nbsp
+        a(href="/transactions/delete/" + transaction.id) Xóa
