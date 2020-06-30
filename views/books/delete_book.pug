@@ -4,6 +4,6 @@ form(action="/books/delete/" + book.id, method="POST")
     input(name="title",type="text", value=book.title)
     br
     label Description
-    input(name="description",type="text")
+    input(name="description",type="text", value=book.description)
     br
     button Delete
