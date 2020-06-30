@@ -1,0 +1,9 @@
+h1 Edit user
+form(action="/users/edit/" + user.id, method="POST")
+    label Name
+    input(name="name",type="text", value=user.name)
+    br
+    label Phone
+    input(name="phone",type="text", value=user.phone)
+    br
+    button Edit

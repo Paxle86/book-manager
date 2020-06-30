@@ -1,0 +1,17 @@
+h1 
+    a(href="/") Users list
+p Create a 
+    a(href="/users/create") New user
+form(action="/users/search", method="GET")
+    input(type="text", name="q", value=q)
+    button Seach
+ul
+    each user in users
+        li
+        span= user.name 
+        span &nbsp
+        a(href="/users/" + user.id) View
+        br
+        a(href="/users/edit/" + user.id) Sửa
+        span &nbsp
+        a(href="/users/delete/" + user.id) Xóa

@@ -1,0 +1,9 @@
+h1 Delete user
+form(action="/users/delete/" + user.id, method="POST")
+    label Name
+    input(name="name",type="text", value=user.name)
+    br
+    label Phone number
+    input(name="phone",type="text", value=user.phone)
+    br
+    button Delete
