@@ -1,82 +1,32 @@
 var express = require('express')
 var router = express.Router()
-const db = require('../db')
-const shortid = require('shortid')
+var controller = require('../controllers/book.controller')
 
 
 // Books list
-router.get('/', (req, res) => res.render('./books/books.pug', { books: db.get('books').value()}))
+router.get('/', controller.bookList)
 
 // Search for a book
-router.get('/search', (req, res) => {
-    var q = req.query.q
-    var matchedBook = db.get('books').value().filter((book) => {
-        return book.title.toLowerCase().indexOf(q.toLowerCase()) !== -1
-    })
-    res.render('books/books.pug', { books: matchedBook, q})
-})
+router.get('/search', controller.searchBook)
 
 // Create book router
-router.get('/create', (req, res) => {
-    res.render('books/create_book.pug')    
-})
+router.get('/create', controller.bookRoute)
 
 // View book by id
-router.get('/:id', (req,res) => {
-    var id = req.params.id
-    var book = db.get('books').find({id: id}).value()
-    res.render('books/view_book.pug', {
-        book: book
-    })
-})
+router.get('/:id', controller.view)
 
 // Edit book title
-router.get('/edit/:id', (req,res) => {
-    var id = req.params.id
-    var book = db.get('books').find({id: id}).value()
-    res.render('books/edit_book.pug', {
-        book: book
-    })
-})
+router.get('/edit/:id', controller.edit)
 
-router.post('/edit/:id', (req,res) => {
-    var id = req.params.id
-    var book = db.get('books').find({id: id}).value()
-    
-    db.get('books')
-    .find({title: book.title}, {description: book.description})
-    .assign({ title: req.body.title}, {description: req.body.description})
-    .write()
-    
-    res.redirect('/books')
-})
+router.post('/edit/:id', controller.editId)
 
 // Delete a book
-router.get('/delete/:id', (req,res) => {
-    var id = req.params.id
-    var book = db.get('books').find({id: id}).value()
-    res.render('books/delete_book.pug', {
-        book: book
-    })
-})
+router.get('/delete/:id', controller.delete)
 
-router.post('/delete/:id', (req,res) => {
-    var id = req.params.id
-    var book = db.get('books').find({id: id}).value()
-    
-    db.get('books')
-    .remove({title: book.title})
-    .write()
-    
-    res.redirect('/books')
-})
+router.post('/delete/:id', controller.deletePost)
 
 // Create new book
-router.post('/create', (req, res) => {
-    req.body.id = shortid.generate()
-    db.get('books').push(req.body).write()
-    res.redirect('/books')
-})
+router.post('/create', controller.create)
 
 
 
