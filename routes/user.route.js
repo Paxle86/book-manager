@@ -2,7 +2,7 @@ var express = require('express')
 var router = express.Router()
 
 var controller = require('../controllers/user.controller')
-
+var validate = require('../validate/user.validate')
 // Users list
 router.get('/', controller.user)
 
@@ -35,6 +35,6 @@ router.post('/delete/:id', controller.deletePost)
 
 
 // Create new user
-router.post('/create', controller.newUser)
+router.post('/create', validate.userValidate, controller.newUser)
 
 module.exports = router

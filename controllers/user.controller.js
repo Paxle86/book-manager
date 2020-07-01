@@ -73,6 +73,12 @@ module.exports.deletePost = (req,res) => {
 
 module.exports.newUser = (req, res) => {
     req.body.id = shortid.generate()
-    db.get('users').push(req.body).write()
-    res.redirect('/users')
-}
+    
+    
+        db.get('users').push(req.body).write()
+        res.redirect('/users')
+    }
+    
+    
+    
+    

@@ -1,6 +1,11 @@
-h1 Welcome
-a(href="/books") Books list 
-span &nbsp
-a(href="/users") Users list 
-span &nbsp
-a(href="/transactions") Transactions list
+extends ./layout/common.pug 
+block content
+
+    h1 Books manager
+        ul(class="nav justify-content-end nav-tab")
+            li(class="nav-item")
+                a(href="/books", class="nav-link") Books
+            li(class="nav-item")
+                a(href="/users", class="nav-link") Users
+            li(class="nav-item")
+                a(href="/transactions", class="nav-link") Transactions 
