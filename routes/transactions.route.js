@@ -25,5 +25,8 @@ router.get('/edit/:id', controller.edit)
 
 router.post('/edit/:id', controller.editId)
 
+// complete a transaction
 
+router.get('/complete/:id', controller.complete)
+router.post('/complete/:id', controller.completeId)
 module.exports = router

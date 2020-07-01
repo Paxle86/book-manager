@@ -11,4 +11,8 @@ form(action="/transactions/create", method="POST")
         each book in books
             option(value=book.title)=book.title
     br
+    label Is Complete
+    select(name="isComplete")
+        option(value=false)=false
+    
     button Create

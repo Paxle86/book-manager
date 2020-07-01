@@ -52,22 +52,20 @@
     {
       "user": "thinh pham",
       "book": "Dragon ball 7",
-      "id": "G3okrI35-"
+      "id": "G3okrI35-",
+      "isComplete": true
+    },
+    {
+      "user": "Thanh Le",
+      "book": "javascript",
+      "isComplete": "false",
+      "id": "QvwCwTWpL"
     },
     {
       "user": "Thanh Le",
       "book": "Doraemon",
-      "id": "MYYJwQHJU"
-    },
-    {
-      "user": "quynh anh",
-      "book": "javascript",
-      "id": "A3yoEZ77T"
-    },
-    {
-      "user": "thai le",
-      "book": "java",
-      "id": "Na4dCNDJ9"
+      "isComplete": "false",
+      "id": "Z9aeg232u"
     }
   ]
 }

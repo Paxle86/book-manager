@@ -25,6 +25,7 @@ module.exports.create = (req, res) => {
 // Create new transaction
 module.exports.createTrans = (req, res) => {
     req.body.id = shortid.generate()
+    isComplete = false
     db.get('transactions').push(req.body).write()
     res.redirect('/transactions')
 }
@@ -52,11 +53,36 @@ module.exports.deletePost = (req,res) => {
     var transaction = db.get('transactions').find({id: id}).value()
     
     db.get('transactions')
-    .remove({user: transaction.user}, {book: transaction.book})
+    .remove({book: transaction.book})
     .write()
     
     res.redirect('/transactions')
 }
+
+// complete transactions
+
+module.exports.complete = (req,res) => {
+    var id = req.params.id
+    var users = db.get('users').value()
+    var books = db.get('books').value()
+    var transaction = db.get('transactions').find({id: id}).value()
+    res.render('transactions/trans_complete.pug', {
+        transaction: transaction,users, books
+    })
+}
+module.exports.completeId = (req,res) => {
+    var id = req.params.id
+    var transaction = db.get('transactions').find({id: id}).value()
+    
+    db.get('transactions')
+    .find({isComplete: transaction.isComplete})
+    .assign({ isComplete: true})
+    .write()
+    
+    res.redirect('/transactions')
+}
+
+
 // Edit user , book in transactions
 module.exports.edit = (req,res) => {
     var id = req.params.id
@@ -67,6 +93,8 @@ module.exports.edit = (req,res) => {
         transaction: transaction,users, books
     })
 }
+
+
 
 module.exports.editId = (req,res) => {
     var id = req.params.id
